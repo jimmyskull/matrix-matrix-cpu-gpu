@@ -13,6 +13,10 @@ Algorithm::Algorithm() : entry(), A(nullptr), B(nullptr), C(nullptr) {
 
 }
 
+Algorithm::~Algorithm() {
+
+}
+
 void Algorithm::Init(const reader::Entry& entry) {
   int N = entry.vertices;
   this->entry = entry;
@@ -23,7 +27,7 @@ void Algorithm::Init(const reader::Entry& entry) {
   memset(B, 0x0, N * N * sizeof(double));
   memset(C, 0x0, N * N * sizeof(double));
   core::Random random;
-  random.generate(N, A);
+  random.generate(N * N, A);
   util::read_sqmatrix(entry.filename, N, B);
 }
 

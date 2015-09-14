@@ -10,11 +10,11 @@
 namespace reader {
 
 struct Entry {
-  Entry() = default;
+  Entry();
 
   Entry(const std::string& directory, std::ifstream &input);
 
-  ~Entry() = default;
+  ~Entry();
 
   const std::string str() const;
 
@@ -30,15 +30,15 @@ public:
 
   FileList(const std::string filename);
 
-  FileList() = default;
+  FileList();
 
-  ~FileList() = default;
+  ~FileList();
 
   void read_list(const std::string& directory, std::ifstream &input);
 
-  const_iterator begin() const { return list_.cbegin(); }
+  const_iterator begin() const { return list_.begin(); }
 
-  const_iterator end() const { return list_.cend(); }
+  const_iterator end() const { return list_.end(); }
 
   std::size_t count() const { return list_.size(); }
 

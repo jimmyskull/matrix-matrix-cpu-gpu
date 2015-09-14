@@ -10,6 +10,10 @@
 
 namespace reader {
 
+Entry::Entry() : filename(""), vertices(0), probability(0.0), density(0.0) {
+
+}
+
 Entry::Entry(const std::string& directory, std::ifstream &input) {
   input >> filename >> vertices >> probability >> density;
   filename.erase(remove(filename.begin(), filename.end(), '\"'),
@@ -17,12 +21,20 @@ Entry::Entry(const std::string& directory, std::ifstream &input) {
   filename = directory + '/' + filename;
 }
 
+Entry::~Entry() {
+
+}
+
 const std::string Entry::str() const {
   std::stringstream ss;
   ss << "Entry<filename='" << filename << "', ";
-  ss << "probability=" << probability << ", ";
+  ss << "vertices=" << vertices << ", ";
   ss << "density=" << density << ">";
   return ss.str();
+}
+
+FileList::FileList() {
+
 }
 
 FileList::FileList(const std::string filename) {
@@ -35,6 +47,10 @@ FileList::FileList(const std::string filename) {
   }
   read_list(directory, file);
   file.close();
+}
+
+FileList::~FileList() {
+
 }
 
 void FileList::read_list(const std::string& directory, std::ifstream &input) {

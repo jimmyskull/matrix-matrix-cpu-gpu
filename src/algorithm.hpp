@@ -1,3 +1,4 @@
+
 #ifndef ALGORITHM_HPP_
 #define ALGORITHM_HPP_
 
@@ -11,7 +12,7 @@ class Algorithm {
  public:
   Algorithm();
 
-  virtual ~Algorithm() = default;
+  virtual ~Algorithm();
 
   virtual void Init(const reader::Entry& entry);
 
