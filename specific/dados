@@ -1,0 +1,50 @@
+A = 1×200 x B = 200×200
+CPU - cblas_sgemm: 0.108004ms
+GPU - cublasSgemm: 0.029981ms
+speed-up: 3.6
+
+A = 200×200 x B = 200×200
+CPU - cblas_sgemm: 2.481014ms
+GPU - cublasSgemm: 0.124007ms
+speed-up: 20
+
+A = 1×500 x B = 500×500
+CPU - cblas_sgemm: 0.894994ms
+GPU - cublasSgemm: 0.093013ms
+speed-up: 9.6
+
+A = 500×500 x B = 500×500
+CPU - cblas_sgemm: 34.281998ms
+GPU - cublasSgemm: 0.241995ms
+speed-up: 141
+
+A = 1×1500 x B = 1500×1500
+CPU - cblas_sgemm: 4.273057ms
+GPU - cublasSgemm: 0.073016ms
+speed-up: 58
+
+1500×1500 x 1500×1500
+CPU - cblas_sgemm: 306.784973ms
+GPU - cublasSgemm: 0.335991ms
+speed-up: 913
+
+1×10000 x 10000×10000
+CPU - cblas_sgemm: 225.239746ms
+GPU - cublasSgemm: 0.119209ms
+speed-up: 1889
+
+10000×10000 x 10000×10000
+CPU - cblas_sgemm: 61256.636719ms
+GPU - cublasSgemm: 0.366211ms
+speed-up: 167271
+
+1×20000 x 20000×20000
+CPU - cblas_sgemm: 225.239746ms
+GPU - cublasSgemm: 0.119209ms
+speed-up: 1889
+
+20000×20000 x 20000×20000
+CPU - cblas_sgemm: 61256.636719ms
+GPU - cublasSgemm: 0.366211ms
+speed-up: 167271
+
