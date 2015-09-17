@@ -20,9 +20,9 @@ class BoostSqMult : public Algorithm {
   const std::string name() const { return "boost       "; }
 
  private:
-  boost::numeric::ublas::matrix<double> a;
-  boost::numeric::ublas::matrix<double> b;
-  boost::numeric::ublas::matrix<double> c;
+  boost::numeric::ublas::matrix<float> a;
+  boost::numeric::ublas::matrix<float> b;
+  boost::numeric::ublas::matrix<float> c;
 };
 
 };

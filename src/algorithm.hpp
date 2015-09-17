@@ -25,9 +25,9 @@ class Algorithm {
  protected:
   reader::Entry entry;
 
-  double* A;  // First
-  double* B;  // Second
-  double* C;  // Result
+  float* A;  // First
+  float* B;  // Second
+  float* C;  // Result
 };
 
 }  // namespace core

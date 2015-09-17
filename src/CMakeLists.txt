@@ -13,6 +13,7 @@ cuda_include_directories(${PROJECT_SOURCE_DIR})
 
 cuda_compile(CUST_CPU_O cust-cpu.cu OPTIONS ${CUDA_FLAGS})
 cuda_compile(CUST_GPU_O cust-gpu.cu OPTIONS ${CUDA_FLAGS})
+cuda_compile(CUBLAS_GPU_O cublas.cu OPTIONS ${CUDA_FLAGS})
 
 cuda_add_executable(multcompare
   main.cpp
@@ -27,8 +28,11 @@ cuda_add_executable(multcompare
   boost.cpp
   eigend.cpp
   eigens.cpp
-  ${CUST_CPU_O})
-  #${CUST_GPU_O})
+  ${CUST_CPU_O}
+  ${CUST_GPU_O}
+  ${CUBLAS_GPU_O})
+
+cuda_add_cublas_to_target(multcompare)
 
 set_target_properties(multcompare PROPERTIES COMPILE_FLAGS "-std=c++11")
 target_link_libraries(multcompare ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES})

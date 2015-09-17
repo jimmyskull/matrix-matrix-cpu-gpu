@@ -8,7 +8,7 @@ void BLASSqMult::Compute() {
   blasint N = static_cast<blasint>(entry.vertices);
 
   // C = alpha * A x B + beta * C
-  cblas_dgemm(CblasRowMajor,
+  cblas_sgemm(CblasRowMajor,
               CblasNoTrans,
               CblasTrans,
               N, // m

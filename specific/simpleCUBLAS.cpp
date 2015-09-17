@@ -51,12 +51,15 @@
 #include <cublas_v2.h>
 #include <helper_cuda.h>
 
+#include <functional>
+#include <Eigen/Sparse>
 
 #include <cblas.h>
 
 
 /* Matrix size */
-#define N  (15000)
+#define N  (250)
+#define DENSITY (0.1)
 
 /* Host implementation of a simple version of sgemm */
 static void simple_sgemm(int n, float alpha, const float *A, const float *B,
@@ -148,12 +151,18 @@ int main(int argc, char **argv)
     /* Fill the matrices with test data */
     for (i = 0; i < n2; i++)
     {
-        h_B[i] = rand() / (float)RAND_MAX;
+        float v = rand() / (float)RAND_MAX;
+        float p = rand() / (float)RAND_MAX;
+        h_B[i] = p < DENSITY? v : 0;
     }
     for (i = 0; i < N; i++)
     {
-        h_A[i] = rand() / (float)RAND_MAX;
-        h_C[i] = rand() / (float)RAND_MAX;
+        float v = rand() / (float)RAND_MAX;
+        float p = rand() / (float)RAND_MAX;
+        h_A[i] = p < DENSITY? v : 0;
+        v = rand() / (float)RAND_MAX;
+        p = rand() / (float)RAND_MAX;
+        h_C[i] = p < DENSITY? v : 0;
     }
     /* Allocate device memory for the matrices */
     if (cudaMalloc((void **)&d_A, N * sizeof(d_A[0])) != cudaSuccess)
@@ -273,7 +282,7 @@ int main(int argc, char **argv)
 
     if (fabs(ref_norm) < 1e-7)
     {
-        fprintf(stderr, "!!!! reference norm is 0\n");
+        fprintf(stderr, "!!!! reference norm is 0. (ref_norm = %f)\n", ref_norm);
         return EXIT_FAILURE;
     }
 

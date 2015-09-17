@@ -26,12 +26,12 @@ public:
      * Write into |output| |choices| random values based on |seed|.
      * Produces random floating-point values in the interval [0, 1)
      */
-    void generate(int choices, double* output);
+    void generate(int choices, float* output);
 
     /*
      * Generate a floating-point value in the interval [0, 1).
      */
-    double next()
+    float next()
     {
         return distribution_(mersenne_engine_);
     }
@@ -65,7 +65,7 @@ private:
     void set_seed(uint64_t seed);
 
     uint64_t seed_;
-    std::uniform_real_distribution<double> distribution_;
+    std::uniform_real_distribution<float> distribution_;
     std::mt19937 mersenne_engine_;  // Mersenne twister MT19937
 };
 

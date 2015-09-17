@@ -31,7 +31,7 @@ void Random::set_seed(uint64_t seed)
     seed_ = seed;
 }
 
-void Random::generate(int choices, double* output)
+void Random::generate(int choices, float* output)
 {
     auto generator = std::bind(distribution_, mersenne_engine_);
 

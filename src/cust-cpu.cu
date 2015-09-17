@@ -6,9 +6,9 @@
 namespace core {
 
 struct CustCPUInternals {
-   cusp::array2d<double, cusp::host_memory> a;
-   cusp::array2d<double, cusp::host_memory> b;
-   cusp::array2d<double, cusp::host_memory> c;
+   cusp::array2d<float, cusp::host_memory> a;
+   cusp::array2d<float, cusp::host_memory> b;
+   cusp::array2d<float, cusp::host_memory> c;
 };
 
 CustCPUSqMult::CustCPUSqMult() : Algorithm() {

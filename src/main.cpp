@@ -10,7 +10,8 @@
 #include "eigend.hpp"
 #include "eigens.hpp"
 #include "cust-cpu.hpp"
-//#include "cust-gpu.hpp"
+#include "cust-gpu.hpp"
+#include "cublas.hpp"
 
 static void test(const reader::Entry& entry, core::Benchmark& bench,
   core::Algorithm&  alg) {
@@ -33,22 +34,24 @@ int main(void) {
     if (entry.vertices != 1000)
       continue;
 
-    core::SimpleSqMult simple;
+    //core::SimpleSqMult simple;
     core::BLASSqMult blas;
-    core::StrassenSqMult strassen;
-    core::BoostSqMult boost;
-    core::EigenDenseSqMult eigend;
+    // core::StrassenSqMult strassen;
+    // core::BoostSqMult boost;
+    // core::EigenDenseSqMult eigend;
     core::EigenSparseSqMult eigens;
-    core::CustCPUSqMult cust_cpu;
+    // core::CustCPUSqMult cust_cpu;
     //core::CustGPUSqMult cust_gpu;
-    test(entry, bench, simple);
+    core::CUBLASSqMult cublas;
+    // test(entry, bench, simple);
     test(entry, bench, blas);
-    test(entry, bench, eigend);
-    test(entry, bench, eigens);
-    test(entry, bench, strassen);
-    test(entry, bench, boost);
-    test(entry, bench, cust_cpu);
-    //test(entry, bench, cust_gpu);
+    // test(entry, bench, eigend);
+    //test(entry, bench, eigens);
+    // test(entry, bench, strassen);
+    // test(entry, bench, boost);
+    // test(entry, bench, cust_cpu);
+    // test(entry, bench, cust_gpu);
+    test(entry, bench, cublas);
   }
 
   return 0;

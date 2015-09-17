@@ -3,7 +3,7 @@
 namespace {
 
 // function to sum two matrices
-static void sum(double *a, double *b, double *result, int tam) {
+static void sum(float *a, float *b, float *result, int tam) {
   int i, j;
   for (i = 0; i < tam; i++) {
     for (j = 0; j < tam; j++) {
@@ -13,7 +13,7 @@ static void sum(double *a, double *b, double *result, int tam) {
 }
 
 // function to subtract two matrices
-static void subtract(double *a, double *b, double *result, int tam) {
+static void subtract(float *a, float *b, float *result, int tam) {
   int i, j;
   for (i = 0; i < tam; i++) {
     for (j = 0; j < tam; j++) {
@@ -23,7 +23,7 @@ static void subtract(double *a, double *b, double *result, int tam) {
 }
 
 // naive method
-void naive(double *A, double *B, double *C, int tam) {
+void naive(float *A, float *B, float *C, int tam) {
   for (int i = 0; i < tam; i++)
     for (int j = 0; j < tam; j++)
       for (int k = 0; k < tam; k++)
@@ -32,7 +32,7 @@ void naive(double *A, double *B, double *C, int tam) {
 
 // http://www.bo-yang.net/2013/03/20/implementation-of-strassens-algorithm-for-matrix-multiplication/
 // Strassen's method
-static void strassen(double *a, double *b, double *c, int tam) {
+static void strassen(float *a, float *b, float *c, int tam) {
   // Key observation: call naive method for matrices small
   if (tam <= 4) {
     naive(a, b, c, tam);
@@ -40,32 +40,32 @@ static void strassen(double *a, double *b, double *c, int tam) {
   }
   // other cases are treated here:
   int newTam = tam / 2;
-  double *a11, *a12, *a21, *a22;
-  double *b11, *b12, *b21, *b22;
-  double *c11, *c12, *c21, *c22;
-  double *p1, *p2, *p3, *p4, *p5, *p6, *p7;
+  float *a11, *a12, *a21, *a22;
+  float *b11, *b12, *b21, *b22;
+  float *c11, *c12, *c21, *c22;
+  float *p1, *p2, *p3, *p4, *p5, *p6, *p7;
   // memory allocation:
-  a11 = new double[newTam * newTam];
-  a12 = new double[newTam * newTam];
-  a21 = new double[newTam * newTam];
-  a22 = new double[newTam * newTam];
-  b11 = new double[newTam * newTam];
-  b12 = new double[newTam * newTam];
-  b21 = new double[newTam * newTam];
-  b22 = new double[newTam * newTam];
-  c11 = new double[newTam * newTam];
-  c12 = new double[newTam * newTam];
-  c21 = new double[newTam * newTam];
-  c22 = new double[newTam * newTam];
-  p1 = new double[newTam * newTam];
-  p2 = new double[newTam * newTam];
-  p3 = new double[newTam * newTam];
-  p4 = new double[newTam * newTam];
-  p5 = new double[newTam * newTam];
-  p6 = new double[newTam * newTam];
-  p7 = new double[newTam * newTam];
-  double *aResult = new double[newTam * newTam];
-  double *bResult = new double[newTam * newTam];
+  a11 = new float[newTam * newTam];
+  a12 = new float[newTam * newTam];
+  a21 = new float[newTam * newTam];
+  a22 = new float[newTam * newTam];
+  b11 = new float[newTam * newTam];
+  b12 = new float[newTam * newTam];
+  b21 = new float[newTam * newTam];
+  b22 = new float[newTam * newTam];
+  c11 = new float[newTam * newTam];
+  c12 = new float[newTam * newTam];
+  c21 = new float[newTam * newTam];
+  c22 = new float[newTam * newTam];
+  p1 = new float[newTam * newTam];
+  p2 = new float[newTam * newTam];
+  p3 = new float[newTam * newTam];
+  p4 = new float[newTam * newTam];
+  p5 = new float[newTam * newTam];
+  p6 = new float[newTam * newTam];
+  p7 = new float[newTam * newTam];
+  float *aResult = new float[newTam * newTam];
+  float *bResult = new float[newTam * newTam];
   // dividing the matrices in 4 sub-matrices:
   for (int i = 0; i < newTam; i++) {
     for (int j = 0; j < newTam; j++) {

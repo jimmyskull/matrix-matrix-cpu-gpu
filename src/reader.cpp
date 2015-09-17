@@ -10,7 +10,7 @@
 
 namespace reader {
 
-Entry::Entry() : filename(""), vertices(0), probability(0.0), density(0.0) {
+Entry::Entry() : filename(""), vertices(0), probability(0.0f), density(0.0f) {
 
 }
 

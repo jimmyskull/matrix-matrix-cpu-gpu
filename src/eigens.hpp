@@ -21,9 +21,9 @@ class EigenSparseSqMult : public Algorithm {
   const std::string name() const { return "eigen-sparse"; }
 
  private:
-  Eigen::SparseMatrix<double, 1, int> a;
-  Eigen::SparseMatrix<double, 1, int> b;
-  Eigen::SparseMatrix<double, 1, int> c;
+  Eigen::SparseMatrix<float, 1, int> a;
+  Eigen::SparseMatrix<float, 1, int> b;
+  Eigen::SparseMatrix<float, 1, int> c;
 };
 
 };

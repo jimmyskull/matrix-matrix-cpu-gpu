@@ -10,7 +10,7 @@
 
 namespace util {
 
-void read_sqmatrix(std::ifstream& input, int dim, double* output) {
+void read_sqmatrix(std::ifstream& input, int dim, float* output) {
   using util::lang::range;
 
   if (!input.is_open()) {
@@ -21,12 +21,12 @@ void read_sqmatrix(std::ifstream& input, int dim, double* output) {
     char c;
     for (int j : range(0, dim)) {
       input >> c;
-      output[i * dim + j] = c == '1'? 1.0: 0.0;
+      output[i * dim + j] = c == '1'? 1.0f: 0.0f;
     }
   }
 }
 
-void read_sqmatrix(std::string filename, int dim, double* output) {
+void read_sqmatrix(std::string filename, int dim, float* output) {
   std::ifstream file(filename);
   read_sqmatrix(file, dim, output);
   file.close();

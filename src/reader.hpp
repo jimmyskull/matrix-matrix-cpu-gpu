@@ -20,8 +20,8 @@ struct Entry {
 
   std::string filename;
   int vertices;
-  double probability;
-  double density;
+  float probability;
+  float density;
 };
 
 class FileList {

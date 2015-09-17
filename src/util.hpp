@@ -6,9 +6,9 @@
 
 namespace util {
 
-void read_sqmatrix(std::ifstream& input, int dim, double* output);
+void read_sqmatrix(std::ifstream& input, int dim, float* output);
 
-void read_sqmatrix(std::string filename, int dim, double* output);
+void read_sqmatrix(std::string filename, int dim, float* output);
 
 // Extract the path of |filename|.
 std::string extract_path(const std::string& filename);

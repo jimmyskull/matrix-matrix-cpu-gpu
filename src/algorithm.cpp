@@ -20,12 +20,12 @@ Algorithm::~Algorithm() {
 void Algorithm::Init(const reader::Entry& entry) {
   int N = entry.vertices;
   this->entry = entry;
-  A = new double[N * N];
-  B = new double[N * N];
-  C = new double[N * N];
-  memset(A, 0x0, N * N * sizeof(double));
-  memset(B, 0x0, N * N * sizeof(double));
-  memset(C, 0x0, N * N * sizeof(double));
+  A = new float[N * N];
+  B = new float[N * N];
+  C = new float[N * N];
+  memset(A, 0x0, N * N * sizeof(float));
+  memset(B, 0x0, N * N * sizeof(float));
+  memset(C, 0x0, N * N * sizeof(float));
   core::Random random;
   random.generate(N * N, A);
   util::read_sqmatrix(entry.filename, N, B);
