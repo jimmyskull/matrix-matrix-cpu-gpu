@@ -7,11 +7,11 @@
 
 namespace core {
 
-class CUBLASSqMult : public Algorithm {
+class CUBLAS : public Algorithm {
  public:
-  CUBLASSqMult();
+  CUBLAS();
 
-  ~CUBLASSqMult();
+  ~CUBLAS();
 
   virtual void Init(const reader::Entry& entry);
 

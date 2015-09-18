@@ -7,11 +7,11 @@
 
 namespace core {
 
-class CustCPUSqMult : public Algorithm {
+class CustCPU : public Algorithm {
  public:
-  CustCPUSqMult();
+  CustCPU();
 
-  ~CustCPUSqMult();
+  ~CustCPU();
 
   virtual void Init(const reader::Entry& entry);
 

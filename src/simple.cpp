@@ -4,7 +4,7 @@
 
 namespace core {
 
-void SimpleSqMult::Compute() {
+void Simple::Compute() {
   std::size_t N = static_cast<std::size_t>(entry.vertices);
 
   for(std::size_t i = 0; i < N; i++) {

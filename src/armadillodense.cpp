@@ -1,11 +1,12 @@
-#include "eigend.hpp"
+#include "armadillodense.hpp"
 
-#include <functional>
-#include <Eigen/Dense>
+#include <cstddef>
+
+#include <armadillo>
 
 namespace core {
 
-void EigenDense::Init(const reader::Entry& entry) {
+void ArmadilloDense::Init(const reader::Entry& entry) {
   Algorithm::Init(entry);
   std::size_t N = static_cast<std::size_t>(entry.vertices);
 
@@ -21,8 +22,8 @@ void EigenDense::Init(const reader::Entry& entry) {
   }
 }
 
-void EigenDense::Compute() {
+void ArmadilloDense::Compute() {
   c = a * b;
 }
 
-}  // namespace core
+} // namespace core

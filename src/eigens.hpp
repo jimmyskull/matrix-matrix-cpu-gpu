@@ -8,11 +8,11 @@
 
 namespace core {
 
-class EigenSparseSqMult : public Algorithm {
+class EigenSparse : public Algorithm {
  public:
-  EigenSparseSqMult() : Algorithm() {};
+  EigenSparse() : Algorithm() {};
 
-  ~EigenSparseSqMult() = default;
+  ~EigenSparse() = default;
 
   virtual void Init(const reader::Entry& entry);
 

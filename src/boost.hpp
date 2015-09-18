@@ -7,11 +7,11 @@
 
 namespace core {
 
-class BoostSqMult : public Algorithm {
+class Boost : public Algorithm {
  public:
-  BoostSqMult() : Algorithm() {};
+  Boost() : Algorithm() {};
 
-  ~BoostSqMult() = default;
+  ~Boost() = default;
 
   virtual void Init(const reader::Entry& entry);
 

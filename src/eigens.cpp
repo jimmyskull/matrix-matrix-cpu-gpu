@@ -5,7 +5,7 @@
 
 namespace core {
 
-void EigenSparseSqMult::Init(const reader::Entry& entry) {
+void EigenSparse::Init(const reader::Entry& entry) {
   Algorithm::Init(entry);
   std::size_t N = static_cast<std::size_t>(entry.vertices);
 
@@ -27,7 +27,7 @@ void EigenSparseSqMult::Init(const reader::Entry& entry) {
   }
 }
 
-void EigenSparseSqMult::Compute() {
+void EigenSparse::Compute() {
   c = a * b;
 }
 

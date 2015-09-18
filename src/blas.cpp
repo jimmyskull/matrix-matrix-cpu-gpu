@@ -4,7 +4,7 @@
 
 namespace core {
 
-void BLASSqMult::Compute() {
+void BLAS::Compute() {
   blasint N = static_cast<blasint>(entry.vertices);
 
   // C = alpha * A x B + beta * C

@@ -18,15 +18,15 @@ struct CustGPUInternals {
    cusp::coo_matrix<size_t, float, cusp::device_memory> dev_c;
 };
 
-CustGPUSqMult::CustGPUSqMult() : Algorithm() {
+CustGPU::CustGPU() : Algorithm() {
   internal = new CustGPUInternals;
 }
 
-CustGPUSqMult::~CustGPUSqMult() {
+CustGPU::~CustGPU() {
   delete internal;
 }
 
-void CustGPUSqMult::Init(const reader::Entry& entry) {
+void CustGPU::Init(const reader::Entry& entry) {
   Algorithm::Init(entry);
   std::size_t N = static_cast<std::size_t>(entry.vertices);
 
@@ -99,7 +99,7 @@ void CustGPUSqMult::Init(const reader::Entry& entry) {
   internal->dev_c = internal->host_c;
 }
 
-void CustGPUSqMult::Compute() {
+void CustGPU::Compute() {
   cusp::multiply(internal->dev_a, internal->dev_b, internal->dev_c);
 }
 

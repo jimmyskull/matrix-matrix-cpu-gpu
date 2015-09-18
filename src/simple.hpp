@@ -5,11 +5,11 @@
 
 namespace core {
 
-class SimpleSqMult : public Algorithm {
+class Simple : public Algorithm {
  public:
-  SimpleSqMult() : Algorithm() {};
+  Simple() : Algorithm() {};
 
-  ~SimpleSqMult() = default;
+  ~Simple() = default;
 
   virtual void Compute();
 

@@ -5,11 +5,11 @@
 
 namespace core {
 
-class StrassenSqMult : public Algorithm {
+class Strassen : public Algorithm {
  public:
-  StrassenSqMult() : Algorithm() {};
+  Strassen() : Algorithm() {};
 
-  ~StrassenSqMult() = default;
+  ~Strassen() = default;
 
   virtual void Compute();
 

@@ -8,11 +8,11 @@
 
 namespace core {
 
-class EigenDenseSqMult : public Algorithm {
+class EigenDense : public Algorithm {
  public:
-  EigenDenseSqMult() : Algorithm() {};
+  EigenDense() : Algorithm() {};
 
-  ~EigenDenseSqMult() = default;
+  ~EigenDense() = default;
 
   virtual void Init(const reader::Entry& entry);
 

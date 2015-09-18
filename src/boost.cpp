@@ -7,8 +7,7 @@
 
 namespace core {
 
-
-void BoostSqMult::Init(const reader::Entry& entry) {
+void Boost::Init(const reader::Entry& entry) {
   Algorithm::Init(entry);
   std::size_t N = static_cast<std::size_t>(entry.vertices);
 
@@ -24,7 +23,7 @@ void BoostSqMult::Init(const reader::Entry& entry) {
   }
 }
 
-void BoostSqMult::Compute() {
+void Boost::Compute() {
   boost::numeric::ublas::axpy_prod(a, b, c);
 }
 

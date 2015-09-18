@@ -11,15 +11,15 @@ struct CustCPUInternals {
    cusp::array2d<float, cusp::host_memory> c;
 };
 
-CustCPUSqMult::CustCPUSqMult() : Algorithm() {
+CustCPU::CustCPU() : Algorithm() {
   internal = new CustCPUInternals;
 }
 
-CustCPUSqMult::~CustCPUSqMult() {
+CustCPU::~CustCPU() {
   delete internal;
 }
 
-void CustCPUSqMult::Init(const reader::Entry& entry) {
+void CustCPU::Init(const reader::Entry& entry) {
   Algorithm::Init(entry);
   std::size_t N = static_cast<std::size_t>(entry.vertices);
 
@@ -36,7 +36,7 @@ void CustCPUSqMult::Init(const reader::Entry& entry) {
   }
 }
 
-void CustCPUSqMult::Compute() {
+void CustCPU::Compute() {
   cusp::multiply(internal->a, internal->b, internal->c);
 }
 

@@ -5,11 +5,11 @@
 
 namespace core {
 
-class BLASSqMult : public Algorithm {
+class BLAS : public Algorithm {
  public:
-  BLASSqMult() : Algorithm() {};
+  BLAS() : Algorithm() {};
 
-  ~BLASSqMult() = default;
+  ~BLAS() = default;
 
   virtual void Compute();
 

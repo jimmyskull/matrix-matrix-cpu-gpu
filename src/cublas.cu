@@ -16,15 +16,15 @@ struct CUBLASGPUInternals {
   cublasHandle_t handle;
 };
 
-CUBLASSqMult::CUBLASSqMult() : Algorithm() {
+CUBLAS::CUBLAS() : Algorithm() {
   internal = new CUBLASGPUInternals;
 }
 
-CUBLASSqMult::~CUBLASSqMult() {
+CUBLAS::~CUBLAS() {
   delete internal;
 }
 
-void CUBLASSqMult::Init(const reader::Entry& entry) {
+void CUBLAS::Init(const reader::Entry& entry) {
   Algorithm::Init(entry);
   std::size_t N = static_cast<std::size_t>(entry.vertices);
   std::size_t N2 = N * N;
@@ -50,6 +50,31 @@ void CUBLASSqMult::Init(const reader::Entry& entry) {
     fprintf(stderr, "!!!! device memory allocation error (allocate C)\n");
   }
 
+}
+
+void CUBLAS::Finalize() {
+  if (cudaFree(internal->dev_a) != cudaSuccess) {
+      fprintf(stderr, "!!!! memory free error (A)\n");
+  }
+
+  if (cudaFree(internal->dev_b) != cudaSuccess) {
+      fprintf(stderr, "!!!! memory free error (B)\n");
+  }
+
+  if (cudaFree(internal->dev_c) != cudaSuccess) {
+      fprintf(stderr, "!!!! memory free error (C)\n");
+  }
+
+  cublasDestroy(internal->handle);
+}
+
+void CUBLAS::Compute() {
+  std::size_t N = static_cast<std::size_t>(entry.vertices);
+  std::size_t N2 = N * N;
+  cublasStatus_t status;
+  float alpha = 1.0f;
+  float beta = 0.0f;
+
   status = cublasSetVector(N2, sizeof(A[0]), A, 1, internal->dev_a, 1);
 
   if (status != CUBLAS_STATUS_SUCCESS) {
@@ -67,31 +92,6 @@ void CUBLASSqMult::Init(const reader::Entry& entry) {
   if (status != CUBLAS_STATUS_SUCCESS) {
       fprintf(stderr, "!!!! device access error (write C)\n");
   }
-
-}
-
-void CUBLASSqMult::Finalize() {
-  if (cudaFree(internal->dev_a) != cudaSuccess) {
-      fprintf(stderr, "!!!! memory free error (A)\n");
-  }
-
-  if (cudaFree(internal->dev_b) != cudaSuccess) {
-      fprintf(stderr, "!!!! memory free error (B)\n");
-  }
-
-  if (cudaFree(internal->dev_c) != cudaSuccess) {
-      fprintf(stderr, "!!!! memory free error (C)\n");
-  }
-
-  cublasDestroy(internal->handle);
-}
-
-void CUBLASSqMult::Compute() {
-  std::size_t N = static_cast<std::size_t>(entry.vertices);
-
-  cublasStatus_t status;
-  float alpha = 1.0f;
-  float beta = 0.0f;
 
   status = cublasSgemm(internal->handle,
     CUBLAS_OP_N,

@@ -142,7 +142,7 @@ static void strassen(float *a, float *b, float *c, int tam) {
 
 namespace core {
 
-void StrassenSqMult::Compute() {
+void Strassen::Compute() {
   strassen(A, B, C, entry.vertices);
 }
 
